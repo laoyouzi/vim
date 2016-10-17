@@ -1,0 +1,555 @@
+<?xml version="1.0"?>
+<!--
+     Some key mappings need Seil and Keyboard Meaestro
+-->
+<root>
+  <devicevendordef>
+    <vendorname>KINESIS</vendorname>
+    <vendorid>0x05f3</vendorid>
+  </devicevendordef>
+  <deviceproductdef>
+    <productname>KINESIS_ADVANTAGE</productname>
+    <productid>0x0007</productid>
+  </deviceproductdef>
+  <appdef>
+    <appname>OmniFocus</appname>
+    <equal>com.omnigroup.OmniFocus2</equal>
+  </appdef>
+  <appdef>
+    <appname>XMind</appname>
+    <equal>org.xmind.cathy.application</equal>
+  </appdef>
+  <item>
+    <name>Customized: General</name>
+    <item>
+      <name>F19 to Hyper Key or Escape</name>
+      <appendix>(F19 to Hyper (ctrl+shift+cmd+opt) + F19 Only, send escape. Use Seil map CapsLock to F19)</appendix>
+      <identifier>private.f192f19_escape</identifier>
+      <modifier_only>ModifierFlag::NONE</modifier_only>
+      <autogen>
+        --KeyOverlaidModifier--
+        KeyCode::F19,
+        KeyCode::COMMAND_L,
+        ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::ESCAPE
+      </autogen>
+    </item>
+    <item>
+      <name>Delete to enclosing folder if you are not editing text</name>
+      <appendix>For Finder</appendix>
+      <identifier>remap.delete_enclosing_folder</identifier>
+
+      <block>
+        <only>
+          FINDER,
+        </only>
+        <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
+        <modifier_only>
+          ModifierFlag::NONE,
+          ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+          ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+        </modifier_only>
+        <autogen>__KeyToKey__ KeyCode::DELETE, KeyCode::DELETE, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L</autogen>
+      </block>
+    </item>
+    <item>
+      <name>Ctrl-H Ctrl-J for Tab switching</name>
+      <identifier>remap.ctrl_hj_tab_switching</identifier>
+      <only>
+        GOOGLE_CHROME, SAFARI, FIREFOX, FINDER
+      </only>
+      <modifier_not>
+        ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R,
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L, ModifierFlag::OPTION_R
+      </modifier_not>
+      <autogen>__KeyToKey__ KeyCode::H, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::TAB, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>Enable Emacs-like key binding</name>
+      <identifier>space_cadet.emacs_like_alt</identifier>
+      <block>
+        <uielementrole_only>AXTextArea, AXTextField, AXWebArea</uielementrole_only>
+        <only>
+          FINDER, MAIL, XMind, OmniFocus
+        </only>
+        <block>
+          <modifier_only>
+            ModifierFlag::OPTION_L | ModifierFlag::NONE
+          </modifier_only>
+          <modifier_not>
+            ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R,
+            ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+            ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R
+          </modifier_not>
+          <autogen>
+            __KeyToKey__
+            KeyCode::F,
+            KeyCode::CURSOR_RIGHT
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::B,
+            KeyCode::CURSOR_LEFT
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::D,
+            KeyCode::DELETE,
+            ModifierFlag::FN
+          </autogen>
+        </block>
+        <block>
+          <modifier_not>
+            ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R,
+            ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+            ModifierFlag::OPTION_L, ModifierFlag::OPTION_R
+          </modifier_not>
+          <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>__KeyToKey__ KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>__KeyToKey__ KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP</autogen>
+          <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::FORWARD_DELETE</autogen>
+          <!-- Ctrl-H / Ctrl-L for tab switch
+          <autogen>__KeyToKey__ KeyCode::H, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::DELETE</autogen>
+          -->
+          <autogen>__KeyToKey__ KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+          <autogen>__KeyToKey__ KeyCode::J, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::M, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN</autogen>
+          <autogen>__KeyToKey__ KeyCode::RETURN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+        </block>
+      </block>
+      <block>
+        <only>
+          GOOGLE_CHROME, SAFARI, FIREFOX, EXCEL, WORD
+        </only>
+          <block>
+          <modifier_only>
+            ModifierFlag::OPTION_L | ModifierFlag::NONE
+          </modifier_only>
+          <modifier_not>
+            ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R,
+            ModifierFlag::COMMAND_L,, ModifierFlag::COMMAND_R,
+            ModifierFlag::CONTROL_L,, ModifierFlag::CONTROL_R
+          </modifier_not>
+          <autogen>
+            __KeyToKey__
+            KeyCode::F,
+            KeyCode::CURSOR_RIGHT
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::B,
+            KeyCode::CURSOR_LEFT
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::D,
+            KeyCode::DELETE,
+            ModifierFlag::FN
+          </autogen>
+        </block>
+        <block>
+          <modifier_not>
+            ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R,
+            ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+            ModifierFlag::OPTION_L, ModifierFlag::OPTION_R
+          </modifier_not>
+          <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+          <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>__KeyToKey__ KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>__KeyToKey__ KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP</autogen>
+          <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::FORWARD_DELETE</autogen>
+          <!-- Ctrl-H / Ctrl-L for tab switch
+          <autogen>__KeyToKey__ KeyCode::H, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::DELETE</autogen>
+          -->
+          <autogen>__KeyToKey__ KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+          <autogen>__KeyToKey__ KeyCode::J, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::M, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN</autogen>
+          <autogen>__KeyToKey__ KeyCode::RETURN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+        </block>
+      </block>
+    </item>
+    <name>Customized for Input Method</name>
+    <item>
+      <name>COMMAND_R Keys to Switch Input Method / COMMAND+OPTION+SHIFT</name>
+      <appendix>COMMAND_R keys to F18 on OS X</appendix>
+      <appendix>(Works well with setting F18 to switch input method in System Preferences)</appendix>
+      <identifier>private.command_r_to_switch_input_method</identifier>
+      <block>
+        <modifier_not>
+          ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R,
+          ModifierFlag::OPTION_L, ModifierFlag::OPTION_R,
+          ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+          ModifierFlag::COMMAND_L
+        </modifier_not>
+        <autogen>
+          __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::COMMAND_R,
+        <!-- hold -->
+        KeyCode::COMMAND_L, ModifierFlag::OPTION_L, ModifierFlag::SHIFT_L,
+        <!-- tap -->
+        KeyCode::F18
+        </autogen>
+      </block>
+    </item>
+    <name>Customized for Dock</name>
+    <item>
+      <name>OPTION_L Tap to Switch Dock Display</name>
+      <identifier>private.option_l_to_option_l_command_l_and_d</identifier>
+      <block>
+        <modifier_not>
+          ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R,
+          ModifierFlag::COMMAND_R,
+          ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+          ModifierFlag::OPTION_L, ModifierFlag::OPTION_R
+        </modifier_not>
+        <autogen>
+          __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::COMMAND_L,
+        <!-- hold -->
+        KeyCode::COMMAND_L,
+        <!-- tap -->
+        KeyCode::D, ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L
+        </autogen>
+      </block>
+    </item>
+  </item>
+  <item>
+    <name>Customized: Use "hjkl" keys as arrow keys if you are not editing text.</name>
+
+    <item>
+      <name>Enable in some standard apps.</name>
+      <appendix>Supported Applications:</appendix>
+      <appendix>- Finder, iPhoto, iTunes, Mail.app.</appendix>
+      <appendix>- Activity Monitor.</appendix>
+      <appendix>- System Preferences, Karabiner, Seil.</appendix>
+      <identifier>remap.leon_hjkl_arrow</identifier>
+
+      {{ HJKL_ARROW_EXTRA }}
+
+      <block>
+        <only>
+          FINDER, IPHOTO, ITUNES, SYSTEM_PREFERENCES,
+          Activity_Monitor,
+          Karabiner, Seil
+        </only>
+        <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
+        <modifier_only>
+          ModifierFlag::NONE,
+          ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+          ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+        </modifier_only>
+        <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+      </block>
+
+      <!-->
+      Disable due to tags management confliction
+      <block>
+        <only>OmniFocus</only>
+        <uielementrole_only>AXOutline</uielementrole_only>
+        <modifier_only>
+          ModifierFlag::NONE,
+          ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+          ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+        </modifier_only>
+        <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+      </block>
+      </!-->
+
+      <block>
+        <uielementrole_only>AXMenu</uielementrole_only>
+        <modifier_only>
+          ModifierFlag::NONE,
+          ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+          ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+        </modifier_only>
+        <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+      </block>
+
+      <block>
+        <only>MAIL</only>
+        <!-- Mail body editor is AXWebArea -->
+        <uielementrole_not>AXTextField, AXTextArea, AXWebArea, AXGroup</uielementrole_not>
+        <modifier_only>
+          ModifierFlag::NONE,
+          ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+          ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+        </modifier_only>
+        <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>Enable in Xcode.</name>
+      <identifier>remap.leon_hjkl_arrow_xcode</identifier>
+      <only>XCODE</only>
+      <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
+      <modifier_only>
+        ModifierFlag::NONE,
+        ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+        ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+      </modifier_only>
+      <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+    </item>
+  </item>
+  <item>
+    <name>Customized: Use "Hyper+hjkl" keys as arrow keys</name>
+    <item>
+      <name>Hyper J to Down</name>
+      <appendix>(Hyper-J to Down arrow)</appendix>
+      <identifier>private.hyper-j-down</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::J,
+        ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_DOWN
+      </autogen>
+    </item>
+    <item>
+      <name>Hyper K to Up</name>
+      <appendix>(Hyper-K to Up arrow)</appendix>
+      <identifier>private.hyper-k-up</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::K,
+        ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_UP
+      </autogen>
+    </item>
+    <item>
+      <name>Hyper H to Left</name>
+      <appendix>(Hyper-H to Left arrow)</appendix>
+      <identifier>private.hyper-h-left</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::H,
+        ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_LEFT
+      </autogen>
+    </item>
+    <item>
+      <name>Hyper L to Right</name>
+      <appendix>(Hyper-L to Right arrow)</appendix>
+      <identifier>private.hyper-l-right</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::L,
+        ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+        KeyCode::CURSOR_RIGHT
+      </autogen>
+    </item>
+  </item>
+
+  <item>
+    <name>Customized for Kinesis Advantage</name>
+    <!-- Map CONTROL_R to BACKSPACE -->
+    <!-- Map OPTION_L to DELETE -->
+    <!-- Map DELETE to OPTION_L -->
+    <item>
+      <name>OPTION_L Tap to Space</name>
+      <appendix>Good for Advantage kinesis</appendix>
+      <identifier>private.option_l_to_space</identifier>
+      <device_only>DeviceVendor::KINESIS, DeviceProduct::KINESIS_ADVANTAGE</device_only>
+      <block>
+        <modifier_not>
+          ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R,
+          ModifierFlag::OPTION_R,
+          ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+          ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R
+        </modifier_not>
+        <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::OPTION_L,
+        <!-- hold -->
+        KeyCode::OPTION_L,
+        <!-- tap -->
+        KeyCode::SPACE
+        </autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>OPTION_R Tap to COMMAND + Z</name>
+      <appendix>Good for Advantage kinesis</appendix>
+      <identifier>private.option_r_to_command+z</identifier>
+      <device_only>DeviceVendor::KINESIS, DeviceProduct::KINESIS_ADVANTAGE</device_only>
+      <block>
+        <modifier_not>
+          ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R,
+          ModifierFlag::OPTION_L,
+          ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+          ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R
+        </modifier_not>
+        <autogen>
+          __KeyOverlaidModifier__
+          <!-- from -->
+          KeyCode::OPTION_R,
+          <!-- hold -->
+          KeyCode::OPTION_R,
+          <!-- tap -->
+          KeyCode::Z,
+          ModifierFlag::COMMAND_L
+        </autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>CONTROL_R Tap to Backspace</name>
+      <appendix>Good for Advantage kinesis</appendix>
+      <identifier>private.control_r_to_backspace</identifier>
+      <device_only>DeviceVendor::KINESIS, DeviceProduct::KINESIS_ADVANTAGE</device_only>
+      <!-- Don't map Backspace to Ctrl for keep holding Backspace to delete quickly-->
+      <block>
+        <modifier_not>
+          ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R,
+          ModifierFlag::OPTION_L, ModifierFlag::OPTION_R,
+          ModifierFlag::CONTROL_L,
+          ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R
+        </modifier_not>
+        <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::CONTROL_R,
+        <!-- hold -->
+        KeyCode::CONTROL_R,
+        <!-- tap -->
+        KeyCode::DELETE
+        </autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>PageDown to OPTION_L+COMMAND_L/COMMAND+F</name>
+      <identifier>private.pagedown_to_command_f</identifier>
+      <device_only>DeviceVendor::KINESIS, DeviceProduct::KINESIS_ADVANTAGE</device_only>
+      <block>
+        <modifier_not>
+          ModifierFlag::OPTION_R,
+          ModifierFlag::COMMAND_R
+        </modifier_not>
+        <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::PAGEDOWN,
+        <!-- hold -->
+        KeyCode::OPTION_L, ModifierFlag::COMMAND_L,
+        <!-- tap -->
+        KeyCode::F, ModifierFlag::COMMAND_L
+        </autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>PageUp to SHIFT_L+COMMAND_L/COMMAND_L+Tab</name>
+      <identifier>private.pageup_to_shift_l_command_l</identifier>
+      <device_only>DeviceVendor::KINESIS, DeviceProduct::KINESIS_ADVANTAGE</device_only>
+      <block>
+        <modifier_not>
+          ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R,
+          ModifierFlag::OPTION_L, ModifierFlag::OPTION_R,
+          ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+          ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R
+        </modifier_not>
+        <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::PAGEUP,
+        <!-- hold -->
+        KeyCode::SHIFT_L, ModifierFlag::COMMAND_L,
+        <!-- tap -->
+        KeyCode::Z, ModifierFlag::COMMAND_L
+        </autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>HOME to OPTION_L+COMMAND_L/COMMAND+C</name>
+      <identifier>private.home_to_command_c</identifier>
+      <device_only>DeviceVendor::KINESIS, DeviceProduct::KINESIS_ADVANTAGE</device_only>
+      <block>
+        <modifier_not>
+          ModifierFlag::OPTION_R,
+          ModifierFlag::COMMAND_R
+        </modifier_not>
+        <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::HOME,
+        <!-- hold -->
+        KeyCode::OPTION_L, ModifierFlag::COMMAND_L,
+        <!-- tap -->
+        KeyCode::C, ModifierFlag::COMMAND_L
+        </autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>END to OPTION_L+CONTROL_L/COMMAND+V</name>
+      <identifier>private.end_to_command_c</identifier>
+      <device_only>DeviceVendor::KINESIS, DeviceProduct::KINESIS_ADVANTAGE</device_only>
+      <block>
+        <modifier_not>
+          ModifierFlag::OPTION_R,
+          ModifierFlag::CONTROL_R,
+          ModifierFlag::COMMAND_R
+        </modifier_not>
+        <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::END,
+        <!-- hold -->
+        KeyCode::OPTION_L, ModifierFlag::CONTROL_L,
+        <!-- tap -->
+        KeyCode::V, ModifierFlag::COMMAND_L
+        </autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>FORWARD_DELETE to CONTROL_L+COMMAND_L/ENTER</name>
+      <identifier>private.forward_delete_to_enter</identifier>
+      <device_only>DeviceVendor::KINESIS, DeviceProduct::KINESIS_ADVANTAGE</device_only>
+      <block>
+        <modifier_not>
+          ModifierFlag::CONTROL_R,
+          ModifierFlag::COMMAND_R
+        </modifier_not>
+        <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::FORWARD_DELETE,
+        <!-- hold -->
+        KeyCode::COMMAND_L, ModifierFlag::CONTROL_L,
+        <!-- tap -->
+        KeyCode::FORWARD_DELETE
+        </autogen>
+      </block>
+    </item>
+
+  </item>
+</root>
+
